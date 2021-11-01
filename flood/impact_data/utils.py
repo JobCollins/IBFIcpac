@@ -68,8 +68,10 @@ def emdat_processing(input, output, country_iso):
             df = df.drop(columns=[col])
     
     df['data_source'] = 'EM_DAT'
-    df['data_source_url'] = 'https://public.emdat.be/'
+    df['data_source_url'] = 'https://www.emdat.be/'
     df.to_csv(output)
+
+    return df
 
 
 def desinventar_processing(input, output):
