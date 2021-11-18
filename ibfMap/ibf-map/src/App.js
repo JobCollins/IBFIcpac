@@ -4,13 +4,22 @@ import mapboxgl from "mapbox-gl"
 import IgadAirports from "./igad_airports_processed.json"
 import KenPowerPlants from "./kenyageolocatedpowerplant.json"
 import KenSchools from "./schools.json"
-import "mapbox-gl/dist/mapbox-gl"
+import "mapbox-gl/dist/mapbox-gl.css";
+import "./App.css"
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
 
-const Popup = ({itemName}) => (
+const Popup = ({itemName, itemType}) => (
   <div className="popup">
     <h3 className="item-name">{itemName}</h3>
+    <div className="route-metric-row">
+      <h4 className="row-title">Name</h4>
+      <div className="row-value">{itemName}</div>
+    </div>
+    <div className="route-metric-row">
+      <h4 className="row-title">Type</h4>
+      <div className="row-value">{itemType}</div>
+    </div>
   </div>
 )
 
@@ -79,18 +88,18 @@ const App = () => {
         }
       })
 
-      // layer visibility toggle handler that could be attached
-      // elsewhere in your application
-      // something like toggleLayerVisibility('bus-stops-circle')
-      function toggleLayerVisibility(layerId) {
-        const visibility = map.getLayoutProperty(layerId, "visibility")
+      // // layer visibility toggle handler that could be attached
+      // // elsewhere in your application
+      // // something like toggleLayerVisibility('bus-stops-circle')
+      // function toggleLayerVisibility(layerId) {
+      //   const visibility = map.getLayoutProperty(layerId, "visibility")
 
-        if (visibility === "visible") {
-          map.setLayoutProperty(layerId, "visibility", "none")
-        } else {
-          map.setLayoutProperty(layerId, "visibility", "visible")
-        }
-      }
+      //   if (visibility === "visible") {
+      //     map.setLayoutProperty(layerId, "visibility", "none")
+      //   } else {
+      //     map.setLayoutProperty(layerId, "visibility", "visible")
+      //   }
+      // }
       
 
     })
@@ -159,6 +168,7 @@ const App = () => {
         ReactDOM.render(
           <Popup
             itemName={feature?.properties?.name}
+            itemType={feature?.properties?.Type}
           />,
           popupNode
         )

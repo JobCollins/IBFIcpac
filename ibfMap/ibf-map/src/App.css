@@ -37,8 +37,12 @@
   }
 }
 
+body {
+  margin: 0;
+}
+
 .mapboxgl-popup-content {
-  min-width: 200px;
+  width: 200px;
 }
 
 .route-metric-row {
