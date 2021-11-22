@@ -39,7 +39,7 @@ const App = () => {
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/dark-v10",
       center:[38, -1],
-      zoom: 7,
+      zoom: 5,
     })
 
     map.on("load", ()=>{
@@ -88,41 +88,133 @@ const App = () => {
           'visibility': 'visible'
         }
       })
-      map.addSource('ken-rice', {
+      map.addSource('ea-rice', {
         type: 'vector',
         // Use any Mapbox-hosted tileset using its tileset id.
         // Learn more about where to find a tileset id:
         // https://docs.mapbox.com/help/glossary/tileset-id/
-        url: 'mapbox://dulo.ckwat3ajp1nm529pners1w2a3-6tlex'
-        });
-        map.addLayer({
-        'id': 'kenrice-data',
+        url: 'mapbox://dulo.ckwavkend205f28plcfwjpi2e-3vgvm'
+      });
+      map.addLayer({
+        'id': 'earice-data',
         'type': 'circle',
-        'source': 'ken-rice',
-        'source-layer':'ken_rice_total',
+        'source': 'ea-rice',
+        'source-layer':'ea_rice_total',
         'paint': {
-          'circle-radius': 5,
+          'circle-radius': 3,
           'circle-color': '#057ff5',
           'circle-stroke-color': '#057ff5',
           'circle-stroke-width': 1,
           'circle-opacity': 0.5
-          }
-        
-        
-        });
+        }
+      
+      
+      });
+      
+      map.addSource('ea-maize', {
+        type: 'vector',
+        // Use any Mapbox-hosted tileset using its tileset id.
+        // Learn more about where to find a tileset id:
+        // https://docs.mapbox.com/help/glossary/tileset-id/
+        url: 'mapbox://dulo.ckwaw4ydu0b3v21sibk0x4pl3-4lewx'
+      });
+      map.addLayer({
+        'id': 'eamaize-data',
+        'type': 'circle',
+        'source': 'ea-maize',
+        'source-layer':'ea_maize_total',
+        'paint': {
+          'circle-radius': 3,
+          'circle-color': '#18ba49',
+          'circle-stroke-color': '#18ba49',
+          'circle-stroke-width': 1,
+          'circle-opacity': 0.5
+        }
+      
+      
+      });
 
-      // // layer visibility toggle handler that could be attached
-      // // elsewhere in your application
-      // // something like toggleLayerVisibility('bus-stops-circle')
-      // function toggleLayerVisibility(layerId) {
-      //   const visibility = map.getLayoutProperty(layerId, "visibility")
+      map.addSource('ea-sugarcane', {
+        type: 'vector',
+        // Use any Mapbox-hosted tileset using its tileset id.
+        // Learn more about where to find a tileset id:
+        // https://docs.mapbox.com/help/glossary/tileset-id/
+        url: 'mapbox://dulo.ckwaw8myl1oad22pnw67iwnfv-7y4o9'
+      });
+      map.addLayer({
+        'id': 'easugarcane-data',
+        'type': 'circle',
+        'source': 'ea-sugarcane',
+        'source-layer':'ea_sugarcane_total',
+        'paint': {
+          'circle-radius': 3,
+          'circle-color': '#d4b322',
+          'circle-stroke-color': '#d4b322',
+          'circle-stroke-width': 1,
+          'circle-opacity': 0.5
+        }
+      
+      
+      });
+      
+      map.addSource('ea-vegetables', {
+        type: 'vector',
+        // Use any Mapbox-hosted tileset using its tileset id.
+        // Learn more about where to find a tileset id:
+        // https://docs.mapbox.com/help/glossary/tileset-id/
+        url: 'mapbox://dulo.ckwawa15h1p1x21mqgrwf3qon-8z5gp'
+      });
+      map.addLayer({
+        'id': 'eaveges-data',
+        'type': 'circle',
+        'source': 'ea-vegetables',
+        'source-layer':'ea_vegetables_total',
+        'paint': {
+          'circle-radius': 3,
+          'circle-color': '#dd42f5',
+          'circle-stroke-color': '#dd42f5',
+          'circle-stroke-width': 1,
+          'circle-opacity': 0.5
+        }
+      
+      
+      });
+        
+      map.addSource('ea-wheat', {
+        type: 'vector',
+        // Use any Mapbox-hosted tileset using its tileset id.
+        // Learn more about where to find a tileset id:
+        // https://docs.mapbox.com/help/glossary/tileset-id/
+        url: 'mapbox://dulo.ckwawcepd1fzk21obw049s6gx-9r9mb'
+      });
+      map.addLayer({
+        'id': 'eawheat-data',
+        'type': 'circle',
+        'source': 'ea-wheat',
+        'source-layer':'ea_wheat_total',
+        'paint': {
+          'circle-radius': 3,
+          'circle-color': '#f5997a',
+          'circle-stroke-color': '#f5997a',
+          'circle-stroke-width': 1,
+          'circle-opacity': 0.5
+        }
+      
+      
+      });
 
-      //   if (visibility === "visible") {
-      //     map.setLayoutProperty(layerId, "visibility", "none")
-      //   } else {
-      //     map.setLayoutProperty(layerId, "visibility", "visible")
-      //   }
-      // }
+      // layer visibility toggle handler that could be attached
+      // elsewhere in your application
+      // something like toggleLayerVisibility('bus-stops-circle')
+      function toggleLayerVisibility(layerId) {
+        const visibility = map.getLayoutProperty(layerId, "visibility")
+
+        if (visibility === "visible") {
+          map.setLayoutProperty(layerId, "visibility", "none")
+        } else {
+          map.setLayoutProperty(layerId, "visibility", "visible")
+        }
+      }
       
 
     })
