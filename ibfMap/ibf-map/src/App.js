@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react"
 import ReactDOM from "react-dom"
 import mapboxgl from "mapbox-gl"
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 import IgadAirports from "./igad_airports_processed.json"
 import KenPowerPlants from "./kenyageolocatedpowerplant.json"
 import KenSchools from "./schools.json"
@@ -179,6 +180,17 @@ const App = () => {
       }
     })
 
+    map.addControl(new mapboxgl.GeolocateControl({
+      positionOptions:{
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true
+    }))
+
+    map.addControl(new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken
+    }))
+
 
     
 
@@ -186,7 +198,7 @@ const App = () => {
     return () => map.remove()
   }, [])
   return <div>
-    <nav style={{borderSpacing: "20px"}} id="menu"></nav>
+    <nav className="sidenav" style={{borderSpacing: "20px"}} id="menu"></nav>
     <div ref={mapContainer} style={{width: "100%", height: "100vh"}}>
   </div>
     </div>
