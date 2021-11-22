@@ -88,6 +88,28 @@ const App = () => {
           'visibility': 'visible'
         }
       })
+      map.addSource('ken-rice', {
+        type: 'vector',
+        // Use any Mapbox-hosted tileset using its tileset id.
+        // Learn more about where to find a tileset id:
+        // https://docs.mapbox.com/help/glossary/tileset-id/
+        url: 'mapbox://dulo.ckwat3ajp1nm529pners1w2a3-6tlex'
+        });
+        map.addLayer({
+        'id': 'kenrice-data',
+        'type': 'circle',
+        'source': 'ken-rice',
+        'source-layer':'ken_rice_total',
+        'paint': {
+          'circle-radius': 5,
+          'circle-color': '#057ff5',
+          'circle-stroke-color': '#057ff5',
+          'circle-stroke-width': 1,
+          'circle-opacity': 0.5
+          }
+        
+        
+        });
 
       // // layer visibility toggle handler that could be attached
       // // elsewhere in your application
@@ -180,12 +202,12 @@ const App = () => {
       }
     })
 
-    map.addControl(new mapboxgl.GeolocateControl({
-      positionOptions:{
-        enableHighAccuracy: true
-      },
-      trackUserLocation: true
-    }))
+    // map.addControl(new mapboxgl.GeolocateControl({
+    //   positionOptions:{
+    //     enableHighAccuracy: true
+    //   },
+    //   trackUserLocation: true
+    // }))
 
     map.addControl(new MapboxGeocoder({
       accessToken: mapboxgl.accessToken
