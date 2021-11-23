@@ -182,28 +182,28 @@ const App = () => {
       
       // });
         
-      // map.addSource('ea-wheat', {
-      //   type: 'vector',
-      //   // Use any Mapbox-hosted tileset using its tileset id.
-      //   // Learn more about where to find a tileset id:
-      //   // https://docs.mapbox.com/help/glossary/tileset-id/
-      //   url: 'mapbox://dulo.ckwawcepd1fzk21obw049s6gx-9r9mb'
-      // });
-      // map.addLayer({
-      //   'id': 'eawheat-data',
-      //   'type': 'circle',
-      //   'source': 'ea-wheat',
-      //   'source-layer':'ea_wheat_total',
-      //   'paint': {
-      //     'circle-radius': 3,
-      //     'circle-color': '#f5997a',
-      //     'circle-stroke-color': '#f5997a',
-      //     'circle-stroke-width': 1,
-      //     'circle-opacity': 0.5
-      //   }
+      map.addSource('ea-wheat', {
+        type: 'vector',
+        // Use any Mapbox-hosted tileset using its tileset id.
+        // Learn more about where to find a tileset id:
+        // https://docs.mapbox.com/help/glossary/tileset-id/
+        url: 'mapbox://dulo.ckwawcepd1fzk21obw049s6gx-9r9mb'
+      });
+      map.addLayer({
+        'id': 'eawheat-data',
+        'type': 'circle',
+        'source': 'ea-wheat',
+        'source-layer':'ea_wheat_total',
+        'paint': {
+          'circle-radius': 3,
+          'circle-color': '#f5997a',
+          'circle-stroke-color': '#f5997a',
+          'circle-stroke-width': 1,
+          'circle-opacity': 0.5
+        }
       
       
-      // });
+      });
 
       const layers = [
         "0-50000",
@@ -383,7 +383,7 @@ const App = () => {
 
     map.on('mousemove', (event)=>{
       const admin = map.queryRenderedFeatures(event.point, {
-        layers: ['ke_pop_data', 'earice-data']
+        layers: ['ke_pop_data', 'earice-data', 'eawheat-data']
       })
       // console.log(admin)
       document.getElementById('pd').innerHTML = 
@@ -395,10 +395,20 @@ const App = () => {
         : `<p>Hover over admin!</p>`
       document.getElementById('cpd').innerHTML = 
         admin.length
-        ? `<h3>Rice: </h3>
+        ? admin[0].layer.id === 'eawheat-data'
+          ?
+          `<h3>Wheat: </h3>
           <p><strong>
           <em>${admin[0].properties.value},000 tonnes
           </strong> (per 5-arcminute grid cell) </em></p>`
+          :
+          admin[0].layer.id === 'earice-data'
+          ?
+          `<h3>Rice: </h3>
+          <p><strong>
+          <em>${admin[0].properties.value},000 tonnes
+          </strong> (per 5-arcminute grid cell) </em></p>`
+          :`<p>No crop layer under mouse!</p>`
         : `<p>Hover over a point!</p>`
     })
 
