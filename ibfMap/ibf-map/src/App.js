@@ -113,74 +113,74 @@ const App = () => {
       
       });
       
-      // map.addSource('ea-maize', {
-      //   type: 'vector',
-      //   // Use any Mapbox-hosted tileset using its tileset id.
-      //   // Learn more about where to find a tileset id:
-      //   // https://docs.mapbox.com/help/glossary/tileset-id/
-      //   url: 'mapbox://dulo.ckwaw4ydu0b3v21sibk0x4pl3-4lewx'
-      // });
-      // map.addLayer({
-      //   'id': 'eamaize-data',
-      //   'type': 'circle',
-      //   'source': 'ea-maize',
-      //   'source-layer':'ea_maize_total',
-      //   'paint': {
-      //     'circle-radius': 3,
-      //     'circle-color': '#18ba49',
-      //     'circle-stroke-color': '#18ba49',
-      //     'circle-stroke-width': 1,
-      //     'circle-opacity': 0.5
-      //   }
+      map.addSource('ea-maize', {
+        type: 'vector',
+        // Use any Mapbox-hosted tileset using its tileset id.
+        // Learn more about where to find a tileset id:
+        // https://docs.mapbox.com/help/glossary/tileset-id/
+        url: 'mapbox://dulo.ckwaw4ydu0b3v21sibk0x4pl3-4lewx'
+      });
+      map.addLayer({
+        'id': 'eamaize-data',
+        'type': 'circle',
+        'source': 'ea-maize',
+        'source-layer':'ea_maize_total',
+        'paint': {
+          'circle-radius': 3,
+          'circle-color': '#18ba49',
+          'circle-stroke-color': '#18ba49',
+          'circle-stroke-width': 1,
+          'circle-opacity': 0.5
+        }
       
       
-      // });
+      });
 
-      // map.addSource('ea-sugarcane', {
-      //   type: 'vector',
-      //   // Use any Mapbox-hosted tileset using its tileset id.
-      //   // Learn more about where to find a tileset id:
-      //   // https://docs.mapbox.com/help/glossary/tileset-id/
-      //   url: 'mapbox://dulo.ckwaw8myl1oad22pnw67iwnfv-7y4o9'
-      // });
-      // map.addLayer({
-      //   'id': 'easugarcane-data',
-      //   'type': 'circle',
-      //   'source': 'ea-sugarcane',
-      //   'source-layer':'ea_sugarcane_total',
-      //   'paint': {
-      //     'circle-radius': 3,
-      //     'circle-color': '#d4b322',
-      //     'circle-stroke-color': '#d4b322',
-      //     'circle-stroke-width': 1,
-      //     'circle-opacity': 0.5
-      //   }
+      map.addSource('ea-sugarcane', {
+        type: 'vector',
+        // Use any Mapbox-hosted tileset using its tileset id.
+        // Learn more about where to find a tileset id:
+        // https://docs.mapbox.com/help/glossary/tileset-id/
+        url: 'mapbox://dulo.ckwaw8myl1oad22pnw67iwnfv-7y4o9'
+      });
+      map.addLayer({
+        'id': 'easugarcane-data',
+        'type': 'circle',
+        'source': 'ea-sugarcane',
+        'source-layer':'ea_sugarcane_total',
+        'paint': {
+          'circle-radius': 3,
+          'circle-color': '#d4b322',
+          'circle-stroke-color': '#d4b322',
+          'circle-stroke-width': 1,
+          'circle-opacity': 0.5
+        }
       
       
-      // });
+      });
       
-      // map.addSource('ea-vegetables', {
-      //   type: 'vector',
-      //   // Use any Mapbox-hosted tileset using its tileset id.
-      //   // Learn more about where to find a tileset id:
-      //   // https://docs.mapbox.com/help/glossary/tileset-id/
-      //   url: 'mapbox://dulo.ckwawa15h1p1x21mqgrwf3qon-8z5gp'
-      // });
-      // map.addLayer({
-      //   'id': 'eaveges-data',
-      //   'type': 'circle',
-      //   'source': 'ea-vegetables',
-      //   'source-layer':'ea_vegetables_total',
-      //   'paint': {
-      //     'circle-radius': 3,
-      //     'circle-color': '#dd42f5',
-      //     'circle-stroke-color': '#dd42f5',
-      //     'circle-stroke-width': 1,
-      //     'circle-opacity': 0.5
-      //   }
+      map.addSource('ea-vegetables', {
+        type: 'vector',
+        // Use any Mapbox-hosted tileset using its tileset id.
+        // Learn more about where to find a tileset id:
+        // https://docs.mapbox.com/help/glossary/tileset-id/
+        url: 'mapbox://dulo.ckwawa15h1p1x21mqgrwf3qon-8z5gp'
+      });
+      map.addLayer({
+        'id': 'eaveges-data',
+        'type': 'circle',
+        'source': 'ea-vegetables',
+        'source-layer':'ea_vegetables_total',
+        'paint': {
+          'circle-radius': 3,
+          'circle-color': '#dd42f5',
+          'circle-stroke-color': '#dd42f5',
+          'circle-stroke-width': 1,
+          'circle-opacity': 0.5
+        }
       
       
-      // });
+      });
         
       map.addSource('ea-wheat', {
         type: 'vector',
@@ -383,7 +383,7 @@ const App = () => {
 
     map.on('mousemove', (event)=>{
       const admin = map.queryRenderedFeatures(event.point, {
-        layers: ['ke_pop_data', 'earice-data', 'eawheat-data']
+        layers: ['ke_pop_data', 'earice-data', 'eawheat-data', 'eaveges-data', 'eamaize-data', 'easugarcane-data']
       })
       // console.log(admin)
       document.getElementById('pd').innerHTML = 
@@ -408,7 +408,28 @@ const App = () => {
           <p><strong>
           <em>${admin[0].properties.value},000 tonnes
           </strong> (per 5-arcminute grid cell) </em></p>`
-          :`<p>No crop layer under mouse!</p>`
+          :
+          admin[0].layer.id === 'eamaize-data'
+          ?
+          `<h3>Maize: </h3>
+          <p><strong>
+          <em>${admin[0].properties.value},000 tonnes
+          </strong> (per 5-arcminute grid cell) </em></p>`
+          :
+          admin[0].layer.id === 'easugarcane-data'
+          ?
+          `<h3>Sugarcane: </h3>
+          <p><strong>
+          <em>${admin[0].properties.value},000 tonnes
+          </strong> (per 5-arcminute grid cell) </em></p>`
+          :
+          admin[0].layer.id === 'eaveges-data'
+          ?
+          `<h3>Vegetable: </h3>
+          <p><strong>
+          <em>${admin[0].properties.value},000 tonnes
+          </strong> (per 5-arcminute grid cell) </em></p>`
+          :`<p>Hover over a point!</p>`
         : `<p>Hover over a point!</p>`
     })
 
