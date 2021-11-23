@@ -90,28 +90,28 @@ const App = () => {
       //     'visibility': 'visible'
       //   }
       // })
-      // map.addSource('ea-rice', {
-      //   type: 'vector',
-      //   // Use any Mapbox-hosted tileset using its tileset id.
-      //   // Learn more about where to find a tileset id:
-      //   // https://docs.mapbox.com/help/glossary/tileset-id/
-      //   url: 'mapbox://dulo.ckwavkend205f28plcfwjpi2e-3vgvm'
-      // });
-      // map.addLayer({
-      //   'id': 'earice-data',
-      //   'type': 'circle',
-      //   'source': 'ea-rice',
-      //   'source-layer':'ea_rice_total',
-      //   'paint': {
-      //     'circle-radius': 3,
-      //     'circle-color': '#057ff5',
-      //     'circle-stroke-color': '#057ff5',
-      //     'circle-stroke-width': 1,
-      //     'circle-opacity': 0.5
-      //   }
+      map.addSource('ea-rice', {
+        type: 'vector',
+        // Use any Mapbox-hosted tileset using its tileset id.
+        // Learn more about where to find a tileset id:
+        // https://docs.mapbox.com/help/glossary/tileset-id/
+        url: 'mapbox://dulo.ckwavkend205f28plcfwjpi2e-3vgvm'
+      });
+      map.addLayer({
+        'id': 'earice-data',
+        'type': 'circle',
+        'source': 'ea-rice',
+        'source-layer':'ea_rice_total',
+        'paint': {
+          'circle-radius': 3,
+          'circle-color': '#057ff5',
+          'circle-stroke-color': '#057ff5',
+          'circle-stroke-width': 1,
+          'circle-opacity': 0.5
+        }
       
       
-      // });
+      });
       
       // map.addSource('ea-maize', {
       //   type: 'vector',
@@ -383,19 +383,35 @@ const App = () => {
 
     map.on('mousemove', (event)=>{
       const admin = map.queryRenderedFeatures(event.point, {
-        layers: ['ke_pop_data']
+        layers: ['ke_pop_data', 'earice-data']
       })
-      console.log(admin)
+      // console.log(admin)
       document.getElementById('pd').innerHTML = 
         admin.length
         ? `<h3>${admin[0].properties.NAME_3}</h3><p>
           <strong>
           <em>${admin[0].properties['2020']}
-          </strong> people per grid </em></p>`
+          </strong> people</em>`
         : `<p>Hover over admin!</p>`
+      document.getElementById('cpd').innerHTML = 
+        admin.length
+        ? `<h3>Rice: </h3>
+          <p><strong>
+          <em>${admin[0].properties.value},000 tonnes
+          </strong> (per 5-arcminute grid cell) </em></p>`
+        : `<p>Hover over a point!</p>`
     })
 
-
+    // map.on('mousemove', (event)=>{
+    //   const agric = map.queryRenderedFeatures(event.point, {
+    //     layers: ['ken-schools-symbol']
+    //   })
+    //   // console.log(admin)
+    //   document.getElementById('pd').innerHTML = 
+    //   agric.length
+    //   ?`<h3>${agric[0].properties.value}</h3>`
+    //   :`<p>Hover over admin!</p>`
+    // })
     
 
     //clean up function to remove map on unmount
@@ -404,11 +420,13 @@ const App = () => {
   return <div>
     <nav className="sidenav" style={{borderSpacing: "20px"}} id="menu"></nav>
     <div ref={mapContainer} style={{width: "100%", height: "100vh"}}></div>
-    <div class="map-overlay" id="features">
-      <h2>KE population</h2>
+    <div className="map-overlay" id="features">
+      <h2>Population data</h2>
       <div id="pd"><p>Hover over an admin!</p></div>
+      <h2>Crop Production data</h2>
+      <div id="cpd"><p>Hover over a crop point!</p></div>
     </div>
-    <div class="map-overlay" id="legend"></div>
+    <div className="map-overlay" id="legend"></div>
     </div>
 }
 
