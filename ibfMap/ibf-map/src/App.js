@@ -220,8 +220,7 @@ const App = () => {
         '#E6B71E',
         '#DA9C20',
         '#CA8323',
-        '#B86B25',
-        '#A25626'
+        '#B86B25'
       ];
 
       // create legend
@@ -239,6 +238,39 @@ const App = () => {
       item.appendChild(key);
       item.appendChild(value);
       legend.appendChild(item);
+      });
+
+      const crop_layers = [
+        "Wheat",
+        "Rice",
+        "Sugarcane",
+        "Maize",
+        "Vegetables"
+      ];
+
+      const crop_colors = [
+        '#f5997a',
+        '#057ff5',
+        '#d4b322',
+        '#18ba49',
+        '#dd42f5'
+      ];
+
+      // create legend
+      const crop_legend = document.getElementById('crop_legend');
+      
+      crop_layers.forEach((crop_layer, i) => {
+      const crop_color = crop_colors[i];
+      const item = document.createElement('div');
+      const key = document.createElement('span');
+      key.className = 'crop_legend-key';
+      key.style.backgroundColor = crop_color;
+      
+      const value = document.createElement('span');
+      value.innerHTML = `${crop_layer}`;
+      item.appendChild(key);
+      item.appendChild(value);
+      crop_legend.appendChild(item);
       });
 
       map.addSource('ke_pop', {
@@ -457,6 +489,7 @@ const App = () => {
       <h2>Crop Production data</h2>
       <div id="cpd"><p>Hover over a crop point!</p></div>
     </div>
+    <div className="map-overlay" id="crop_legend"></div>
     <div className="map-overlay" id="legend"></div>
     </div>
 }
