@@ -205,6 +205,42 @@ const App = () => {
       
       // });
 
+      const layers = [
+        "0-50000",
+        "50000-100000",
+        "100000-150000",
+        "150000-200000",
+        "200000-250000",
+        "250000-300000"
+      ]
+
+      const colors = [
+        '#F2F12D',
+        '#EED322',
+        '#E6B71E',
+        '#DA9C20',
+        '#CA8323',
+        '#B86B25',
+        '#A25626'
+      ];
+
+      // create legend
+      const legend = document.getElementById('legend');
+      
+      layers.forEach((layer, i) => {
+      const color = colors[i];
+      const item = document.createElement('div');
+      const key = document.createElement('span');
+      key.className = 'legend-key';
+      key.style.backgroundColor = color;
+      
+      const value = document.createElement('span');
+      value.innerHTML = `${layer}`;
+      item.appendChild(key);
+      item.appendChild(value);
+      legend.appendChild(item);
+      });
+
       map.addSource('ke_pop', {
         type: 'vector',
         url: 'mapbox://dulo.6bejorsu'
@@ -345,6 +381,20 @@ const App = () => {
       accessToken: mapboxgl.accessToken
     }))
 
+    map.on('mousemove', (event)=>{
+      const admin = map.queryRenderedFeatures(event.point, {
+        layers: ['ke_pop_data']
+      })
+      console.log(admin)
+      document.getElementById('pd').innerHTML = 
+        admin.length
+        ? `<h3>${admin[0].properties.NAME_3}</h3><p>
+          <strong>
+          <em>${admin[0].properties['2020']}
+          </strong> people per grid </em></p>`
+        : `<p>Hover over admin!</p>`
+    })
+
 
     
 
@@ -353,8 +403,12 @@ const App = () => {
   }, [])
   return <div>
     <nav className="sidenav" style={{borderSpacing: "20px"}} id="menu"></nav>
-    <div ref={mapContainer} style={{width: "100%", height: "100vh"}}>
-  </div>
+    <div ref={mapContainer} style={{width: "100%", height: "100vh"}}></div>
+    <div class="map-overlay" id="features">
+      <h2>KE population</h2>
+      <div id="pd"><p>Hover over an admin!</p></div>
+    </div>
+    <div class="map-overlay" id="legend"></div>
     </div>
 }
 
