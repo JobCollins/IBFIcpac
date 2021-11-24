@@ -307,6 +307,351 @@ const App = () => {
       }, 'waterway-label'
     )
 
+    map.addSource('eth_pop', {
+      type: 'vector',
+      url: 'mapbox://dulo.89z9qqcn'
+    })
+    map.addLayer({
+      'id': 'eth_pop_data',
+      'source':'eth_pop',
+      "source-layer": 'eth_ppp_2020_data_ppp_2020-4eqclk',
+      'type': 'fill',
+      'paint':{
+        'fill-color':[
+          'interpolate',
+          ['linear'],
+          ['get', 'pop_2020'],
+          0,
+          '#F2F12D',
+          50000,
+          '#EED322',
+          100000,
+          '#E6B71E',
+          150000,
+          '#DA9C20',
+          200000,
+          '#CA8323',
+          250000,
+          '#B86B25',
+          300000,
+          '#A25626',
+          ],
+          "fill-opacity":0.75
+        }
+      }, 'waterway-label'
+    )
+
+    map.addSource('som_pop', {
+      type: 'vector',
+      url: 'mapbox://dulo.8blu1i5m'
+    })
+    map.addLayer({
+      'id': 'som_pop_data',
+      'source':'som_pop',
+      "source-layer": 'som_ppp_2020_data_ppp_2020-1em3te',
+      'type': 'fill',
+      'paint':{
+        'fill-color':[
+          'interpolate',
+          ['linear'],
+          ['get', 'pop_2020'],
+          0,
+          '#F2F12D',
+          50000,
+          '#EED322',
+          100000,
+          '#E6B71E',
+          150000,
+          '#DA9C20',
+          200000,
+          '#CA8323',
+          250000,
+          '#B86B25',
+          300000,
+          '#A25626',
+          ],
+          "fill-opacity":0.75
+        }
+      }, 'waterway-label'
+    )
+
+    map.addSource('tza_pop', {
+      type: 'vector',
+      url: 'mapbox://dulo.6tf56lgl'
+    })
+    map.addLayer({
+      'id': 'tza_pop_data',
+      'source':'tza_pop',
+      "source-layer": 'tza_ppp_2020_data_ppp_2020-6lkwe1',
+      'type': 'fill',
+      'paint':{
+        'fill-color':[
+          'interpolate',
+          ['linear'],
+          ['get', 'pop_2020'],
+          0,
+          '#F2F12D',
+          50000,
+          '#EED322',
+          100000,
+          '#E6B71E',
+          150000,
+          '#DA9C20',
+          200000,
+          '#CA8323',
+          250000,
+          '#B86B25',
+          300000,
+          '#A25626',
+          ],
+          "fill-opacity":0.75
+        }
+      }, 'waterway-label'
+    )
+
+    map.addSource('uga_pop', {
+      type: 'vector',
+      url: 'mapbox://dulo.cn1vkbq2'
+    })
+    map.addLayer({
+      'id': 'uga_pop_data',
+      'source':'uga_pop',
+      "source-layer": 'uga_ppp_2020_data_ppp_2020-2q53lx',
+      'type': 'fill',
+      'paint':{
+        'fill-color':[
+          'interpolate',
+          ['linear'],
+          ['get', 'pop_2020'],
+          0,
+          '#F2F12D',
+          50000,
+          '#EED322',
+          100000,
+          '#E6B71E',
+          150000,
+          '#DA9C20',
+          200000,
+          '#CA8323',
+          250000,
+          '#B86B25',
+          300000,
+          '#A25626',
+          ],
+          "fill-opacity":0.75
+        }
+      }, 'waterway-label'
+    )
+
+    map.addSource('ssd_pop', {
+      type: 'vector',
+      url: 'mapbox://dulo.1ef6yt3o'
+    })
+    map.addLayer({
+      'id': 'ssd_pop_data',
+      'source':'ssd_pop',
+      "source-layer": 'ssd_ppp_2020_data_ppp_2020-b13sal',
+      'type': 'fill',
+      'paint':{
+        'fill-color':[
+          'interpolate',
+          ['linear'],
+          ['get', 'pop_2020'],
+          0,
+          '#F2F12D',
+          50000,
+          '#EED322',
+          100000,
+          '#E6B71E',
+          150000,
+          '#DA9C20',
+          200000,
+          '#CA8323',
+          250000,
+          '#B86B25',
+          300000,
+          '#A25626',
+          ],
+          "fill-opacity":0.75
+        }
+      }, 'waterway-label'
+    )
+
+    map.addSource('eri_pop', {
+      type: 'vector',
+      url: 'mapbox://dulo.7g4dncb9'
+    })
+    map.addLayer({
+      'id': 'eri_pop_data',
+      'source':'eri_pop',
+      "source-layer": 'eri_ppp_2020_data_ppp_2020-atv38n',
+      'type': 'fill',
+      'paint':{
+        'fill-color':[
+          'interpolate',
+          ['linear'],
+          ['get', 'pop_2020'],
+          0,
+          '#F2F12D',
+          50000,
+          '#EED322',
+          100000,
+          '#E6B71E',
+          150000,
+          '#DA9C20',
+          200000,
+          '#CA8323',
+          250000,
+          '#B86B25',
+          300000,
+          '#A25626',
+          ],
+          "fill-opacity":0.75
+        }
+      }, 'waterway-label'
+    )
+
+    map.addSource('dji_pop', {
+      type: 'vector',
+      url: 'mapbox://dulo.31gnat9t'
+    })
+    map.addLayer({
+      'id': 'dji_pop_data',
+      'source':'dji_pop',
+      "source-layer": 'dji_ppp_2020_data_ppp_2020-a5qm6t',
+      'type': 'fill',
+      'paint':{
+        'fill-color':[
+          'interpolate',
+          ['linear'],
+          ['get', 'pop_2020'],
+          0,
+          '#F2F12D',
+          50000,
+          '#EED322',
+          100000,
+          '#E6B71E',
+          150000,
+          '#DA9C20',
+          200000,
+          '#CA8323',
+          250000,
+          '#B86B25',
+          300000,
+          '#A25626',
+          ],
+          "fill-opacity":0.75
+        }
+      }, 'waterway-label'
+    )
+
+    map.addSource('bdi_pop', {
+      type: 'vector',
+      url: 'mapbox://dulo.2gx9wzni'
+    })
+    map.addLayer({
+      'id': 'bdi_pop_data',
+      'source':'bdi_pop',
+      "source-layer": 'bdi_ppp_2020_data_ppp_2020-9ypiv4',
+      'type': 'fill',
+      'paint':{
+        'fill-color':[
+          'interpolate',
+          ['linear'],
+          ['get', 'pop_2020'],
+          0,
+          '#F2F12D',
+          50000,
+          '#EED322',
+          100000,
+          '#E6B71E',
+          150000,
+          '#DA9C20',
+          200000,
+          '#CA8323',
+          250000,
+          '#B86B25',
+          300000,
+          '#A25626',
+          ],
+          "fill-opacity":0.75
+        }
+      }, 'waterway-label'
+    )
+
+    map.addSource('rwa_pop', {
+      type: 'vector',
+      url: 'mapbox://dulo.def645p4'
+    })
+    map.addLayer({
+      'id': 'rwa_pop_data',
+      'source':'rwa_pop',
+      "source-layer": 'rwa_ppp_2020_data_ppp_2020-72nn15',
+      'type': 'fill',
+      'paint':{
+        'fill-color':[
+          'interpolate',
+          ['linear'],
+          ['get', 'pop_2020'],
+          0,
+          '#F2F12D',
+          50000,
+          '#EED322',
+          100000,
+          '#E6B71E',
+          150000,
+          '#DA9C20',
+          200000,
+          '#CA8323',
+          250000,
+          '#B86B25',
+          300000,
+          '#A25626',
+          ],
+          "fill-opacity":0.75
+        }
+      }, 'waterway-label'
+    )
+
+    map.addSource('sdn_pop', {
+      type: 'vector',
+      url: 'mapbox://dulo.04nifz4f'
+    })
+    map.addLayer({
+      'id': 'sdn_pop_data',
+      'source':'sdn_pop',
+      "source-layer": 'sdn_ppp_2020-c6mlg4',
+      'type': 'fill',
+      'paint':{
+        'fill-color':[
+          'interpolate',
+          ['linear'],
+          ['get', 'pop_2020'],
+          0,
+          '#F2F12D',
+          50000,
+          '#EED322',
+          100000,
+          '#E6B71E',
+          150000,
+          '#DA9C20',
+          200000,
+          '#CA8323',
+          250000,
+          '#B86B25',
+          300000,
+          '#A25626',
+          ],
+          "fill-opacity":0.75
+        }
+      }, 'waterway-label'
+    )
+
+    
+
+    
+    
+
     
     
 
@@ -415,14 +760,21 @@ const App = () => {
 
     map.on('mousemove', (event)=>{
       const admin = map.queryRenderedFeatures(event.point, {
-        layers: ['ke_pop_data', 'earice-data', 'eawheat-data', 'eaveges-data', 'eamaize-data', 'easugarcane-data']
+        layers: ['ke_pop_data', 'bdi_pop_data', 'dji_pop_data', 'eri_pop_data', 'eth_pop_data', 'rwa_pop_data', 'som_pop_data', 'sdn_pop_data', 'tza_pop_data', 'uga_pop_data', 'ssd_pop_data', 'earice-data', 'eawheat-data', 'eaveges-data', 'eamaize-data', 'easugarcane-data']
       })
       // console.log(admin)
       document.getElementById('pd').innerHTML = 
         admin.length
-        ? `<h3>${admin[0].properties.NAME_3}</h3><p>
+        ? admin[0].layer.id === 'som_pop_data'
+          ?
+          `<h3>${admin[0].properties.NAME_2}</h3><p>
           <strong>
-          <em>${admin[0].properties['2020']}
+          <em>${admin[0].properties['pop_2020']}
+          </strong> people</em>`
+          :
+          `<h3>${admin[0].properties.NAME_3}</h3><p>
+          <strong>
+          <em>${admin[0].properties['pop_2020']}
           </strong> people</em>`
         : `<p>Hover over admin!</p>`
       document.getElementById('cpd').innerHTML = 
