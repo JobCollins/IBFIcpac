@@ -1,19 +1,5 @@
 
 
-nav.sidenav{
-  float: left;
-}
-
-a {
-  background-color: #4CAF50; /* Green */
-  border: solid whitesmoke;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-}
 
 .mapboxgl-popup-content {
   width: 200px;
@@ -97,7 +83,7 @@ width: 100%;
 top: 0;
 height: 240px;
 margin-top: 50px;
-width: 250px;
+width: 210px;
 }
 #legend {
 padding: 10px;
@@ -106,7 +92,17 @@ line-height: 25px;
 height: 150px;
 margin-bottom: 80px;
 width: 150px;
+opacity: 25%;
 }
+#legend:hover {
+  padding: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  line-height: 25px;
+  height: 150px;
+  margin-bottom: 80px;
+  width: 150px;
+  opacity: 100%;
+  }
 #crop_legend {
   padding: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -114,7 +110,17 @@ width: 150px;
   height: 150px;
   margin-bottom: 280px;
   width: 150px;
+  opacity: 25%;
   }
+  #crop_legend:hover{
+    padding: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    line-height: 25px;
+    height: 150px;
+    margin-bottom: 280px;
+    width: 150px;
+    opacity: 100%;
+    }
 .legend-key {
 display: inline-block;
 border-radius: 20%;
@@ -130,3 +136,58 @@ margin-right: 5px;
   height: 10px;
   margin-right: 5px;
 }
+
+#menu {
+  background: #fff;
+  position: absolute;
+  z-index: 1;
+  bottom: 90px;
+  left: 10px;
+  border-radius: 3px;
+  width: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  font-family: 'Open Sans', sans-serif;
+  opacity: 25%;
+  }
+  #menu:hover {
+    background: #fff;
+    position: absolute;
+    z-index: 1;
+    bottom: 90px;
+    left: 10px;
+    border-radius: 3px;
+    width: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    font-family: 'Open Sans', sans-serif;
+    opacity: 100%;
+    }
+   
+  #menu a {
+  font-size: 13px;
+  color: #404040;
+  display: block;
+  margin: 0;
+  padding: 0;
+  padding: 10px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  text-align: center;
+  }
+   
+  #menu a:last-child {
+  border: none;
+  }
+   
+  #menu a:hover {
+  background-color: #f8f8f8;
+  color: #404040;
+  }
+
+  #menu a.active {
+  background-color: #ffffff;
+  color: #000;
+  }
+   
+  #menu a.active:hover {
+  background: #3074a4;
+  }

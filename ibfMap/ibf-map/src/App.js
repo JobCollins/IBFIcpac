@@ -674,12 +674,12 @@ const App = () => {
 
     map.on('idle', () => {
       // If these two layers were not added to the map, abort
-      if (!map.getLayer('ken-schools-symbol') || !map.getLayer('ken-pplants-symbol') || !map.getLayer('igad-airports-symbol')) {
+      if (!map.getLayer('earice-data') || !map.getLayer('eawheat-data') || !map.getLayer('eaveges-data') || !map.getLayer('eamaize-data') || !map.getLayer('easugarcane-data')) {
       return;
       }
        
       // Enumerate ids of the layers.
-      const toggleableLayerIds = ['ken-schools-symbol', 'ken-pplants-symbol', 'igad-airports-symbol'];
+      const toggleableLayerIds = ['earice-data', 'eawheat-data', 'eaveges-data', 'eamaize-data', 'easugarcane-data'];
        
       // Set up the corresponding toggle button for each layer.
       for (const id of toggleableLayerIds) {
