@@ -1,7 +1,7 @@
 fn = '/Users/jobdulo/Downloads/github/datasets/tl_2019_16_place/id_cities.shp'
 lyr = QgsVectorLayer(fn, 'cities', 'ogr')
 
-#CALCULATE DISTANCE BETWEEN TWO CITIES
+#CALCULATE DISTANCE BETWEEN TWO CITIES IN DEGREES
 feat0 = lyr.getFeature(0)
 print(feat0['NAME'])
 feat1 = lyr.getFeature(1)
